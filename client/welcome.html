@@ -37,9 +37,17 @@
 	</div>
 	
 	{{#if currentUser}}
-	<i class="fa fa-thumbs-up green"></i> Yay! You are logged in!
+	
+	<div class="alert alert-success alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <i class="fa fa-info-circle green"></i> Yay! You are logged in!
+	</div>
 	{{else}}
-	<i class="fa fa-thumbs-down red"></i> You should log in!
+	<div class="alert alert-warning alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <i class="fa fa-info-circle red"></i> You should log in!
+	</div>
+	
 	{{/if}}
 
 
