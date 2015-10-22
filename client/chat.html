@@ -10,45 +10,23 @@
 	{{else}}
 	You must be signed in to post comments!
 	{{/if}}
-	
-	<h2>Showing the last {{ofTen}} of {{numchats}} chats</h2>
-  	<table class="table table-bordered table-hover">
-  		<thead>
-  		  <tr>
-	        <th>Name</th>
-	        <th>Message</th>
-	        <th>Time</th>
-	      </tr>
-  		</thead>
-	  	<tbody>
-		{{#each chatlines}}
-		{{> chatitem}}
-		{{/each}}
-		</tbody>
-	</table>
-
+	<br>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">
 	  	<h5>Showing the last {{ofTen}} of {{numchats}} chats</h5>
 	  </div>
 	  <div class="panel-body list-group">
 	  	{{#each chatlines}}
-		{{> chatitem2}}
+		{{> chatitem}}
 		{{/each}}
 	  </div>
 	</div>
 
-
-
 </template>
+
+
 
 <template name="chatitem">
-	<tr>
-		<td>{{who}}</td> <td>{{what}}</td><td> at {{when}}</td>
-	</tr>
-</template>
-
-<template name="chatitem2">
 	<div class="list-group-item">
     <p class="list-group-item-text">{{what}}</p>
     <h6 class="list-group-item-heading text-muted"><i class="fa fa-user"></i> {{who}} <i class="fa fa-calendar"></i> {{when}}</h6>
