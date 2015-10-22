@@ -5,11 +5,41 @@
 			We promise to provide you with the best app for your needs!
 		</p>
 	</div>
+
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	  	<h5>List of New Features</h5>
+	  </div>
+	  <div class="panel-body">
+	  	<div class="row">
+	  		<div class="col-md-6">
+		    <div class="alert alert-success" role="alert">
+			  <strong><a href="https://fortawesome.github.io/Font-Awesome/icons/" class="alert-link">Font-Awesome Icons</a></strong> This was done by adding the Font Awesome package to the Meteor app. <a href="https://atmospherejs.com/fortawesome/fontawesome" class="alert-link">See this Page!</a>
+			</div>
+			</div>
+			<div class="col-md-6">
+			<div class="alert alert-info" role="alert">
+			  <a href="#" class="alert-link">...</a>
+			</div>
+			</div>
+			<div class="col-md-6">
+			<div class="alert alert-warning" role="alert">
+			  <a href="#" class="alert-link">...</a>
+			</div>
+			</div>
+			<div class="col-md-6">
+			<div class="alert alert-danger" role="alert">
+			  <a href="#" class="alert-link">...</a>
+			</div>
+			</div>
+		</div>
+	  </div>
+	</div>
 	
 	{{#if currentUser}}
-	Yay! You are logged in!
+	<i class="fa fa-thumbs-up green"></i> Yay! You are logged in!
 	{{else}}
-	You should log in!
+	<i class="fa fa-thumbs-down red"></i> You should log in!
 	{{/if}}
 
 

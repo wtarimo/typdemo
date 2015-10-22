@@ -29,5 +29,12 @@ Template.chat.helpers({
 	},
 	numchats: function(){
 		return ChatLines.find().count();
+	},
+	ofTen: function(){
+		var available = ChatLines.find().count();
+		if (available > 10)
+			return 10;
+		else
+			return available;
 	}
 });
