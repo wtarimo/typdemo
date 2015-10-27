@@ -20,7 +20,9 @@
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      	<ul class="nav navbar-nav">
 					<li><a href="{{pathFor 'about'}}"><i class="fa fa-info-circle"></i> About</a></li>
-					<li><a href="{{pathFor 'chat'}}"><i class="fa fa-comments"></i> Chat</a></li>
+					<li><a href="{{pathFor 'chat'}}"><i class="fa fa-commenting-o"></i> Comments <span class="badge">{{numchats}}</span></a></li>
+					<li><a href="{{pathFor 'posts'}}"><i class="fa fa-comments-o"></i> Posts <span class="badge">{{numposts}}</span></a></li>
+					<li><a href="{{pathFor 'users'}}"><i class="fa fa-users"></i> Users</a></li>
 				</ul>			
 
 				<ul class="nav navbar-nav navbar-right">

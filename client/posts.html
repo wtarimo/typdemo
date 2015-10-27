@@ -1,0 +1,65 @@
+<template name="posts">
+	
+	{{#if currentUser}}
+	<form id="postform" class="bg-info">
+		<div class="input-group">
+		  <span class="input-group-addon">Heading</span>
+		  <input type="text" id="heading" class="form-control">
+		</div>
+		<div class="input-group">
+		  <span class="input-group-addon">Categoory</span>
+		  <select class="form-control" name="category" id="category">
+		  	<option value="">Select Post Category</option>
+		  	<option value="Category 1">Category 1</option>
+		  	<option value="Category 2">Category 2</option>
+		  	<option value="Category 3">Category 3</option>
+		  	<option value="Category 4">Category 4</option>
+		  </select>
+		</div>
+		<div class="input-group">
+		  <span class="input-group-addon">Body</span>
+		  <textarea id="body" class="form-control"></textarea>
+		</div>
+		<div class="input-group text-center">
+		  <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane-o"></i> Submit</button>
+		</div>
+	</form>
+
+	<br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	  	<h5>Posts</h5>
+	  </div>
+	  <div class="panel-body list-group">
+	  	{{#each posts}}
+		{{> post}}
+		{{/each}}
+	  </div>
+	</div>
+
+	{{else}}
+	<div class="alert alert-danger alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <i class="fa fa-info-circle red"></i> You must be logged in to create or view posts!
+	</div>
+	{{/if}}
+
+</template>
+
+
+
+<template name="post">
+	<div class="list-group-item">
+	<h5 class="list-group-item-heading">{{heading}}</h5>
+    <p class="list-group-item-text">{{body}}</p>
+    <p class="list-group-item-text post-details">
+    <span class="badge">{{category}}</span> <i class="fa fa-ellipsis-v"></i>
+    <i class="fa fa-user"></i> {{name}} <i class="fa fa-ellipsis-v"></i> 
+    <i class="fa fa-comments"></i> {{comments}} comments <i class="fa fa-ellipsis-v"></i> 
+    <i class="fa fa-calendar"></i> {{when}} <i class="fa fa-ellipsis-v"></i> 
+    <button type="button" id="like" title="Click to like post!" class="btn btn-success btn-xs">{{likes}} <i class="fa fa-thumbs-up"></i></button> <i class="fa fa-ellipsis-v"></i> 
+    <button type="button" id="dislike" title="Click to dislike post!" class="btn btn-danger btn-xs">{{dislikes}} <i class="fa fa-thumbs-down"></i></button>
+    <button type="button" id="delete" title="Delete Post!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
+    </p>
+  </div>
+</template>
