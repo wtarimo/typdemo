@@ -50,8 +50,11 @@
 
 <template name="post">
 	<div class="list-group-item">
-	<h5 class="list-group-item-heading">{{heading}}</h5>
+	<a href="/posts/{{_id}}">
+		<h5 class="list-group-item-heading">{{heading}}</h5>
+	</a>
     <p class="list-group-item-text">{{body}}</p>
+    
     <p class="list-group-item-text post-details">
     <span class="badge">{{category}}</span> <i class="fa fa-ellipsis-v"></i>
     <i class="fa fa-user"></i> {{name}} <i class="fa fa-ellipsis-v"></i> 

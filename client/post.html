@@ -1,0 +1,27 @@
+<template name="postPage">
+	{{> currentPost}}
+	<form id="commentform">
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1">New Comment</span>
+		  <input type="text" id="comment-body" class="form-control" size="100%" aria-describedby="basic-addon1">
+		</div>
+	</form>
+</template>
+
+
+<template name="currentPost">
+	<div class="list-group-item">
+		<h5 class="list-group-item-heading">{{heading}}</h5>
+	    <p class="list-group-item-text">{{body}}</p>
+	    
+	    <p class="list-group-item-text post-details">
+	    <span class="badge">{{category}}</span> <i class="fa fa-ellipsis-v"></i>
+	    <i class="fa fa-user"></i> {{name}} <i class="fa fa-ellipsis-v"></i> 
+	    <i class="fa fa-comments"></i> {{comments}} comments <i class="fa fa-ellipsis-v"></i> 
+	    <i class="fa fa-calendar"></i> {{when}} <i class="fa fa-ellipsis-v"></i> 
+	    <button type="button" id="like" title="Click to like post!" class="btn btn-success btn-xs">{{likes}} <i class="fa fa-thumbs-up"></i></button> <i class="fa fa-ellipsis-v"></i> 
+	    <button type="button" id="dislike" title="Click to dislike post!" class="btn btn-danger btn-xs">{{dislikes}} <i class="fa fa-thumbs-down"></i></button>
+	    <button type="button" id="delete" title="Delete Post!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
+	    </p>
+	  </div>
+</template>
