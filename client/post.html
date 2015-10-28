@@ -2,10 +2,21 @@
 	{{> currentPost}}
 	<form id="commentform">
 		<div class="input-group">
-		  <span class="input-group-addon" id="basic-addon1">New Comment</span>
-		  <input type="text" id="comment-body" class="form-control" size="100%" aria-describedby="basic-addon1">
+		  <span class="input-group-addon">New Comment</span>
+		  <input type="text" id="comment-body" class="form-control" size="100%">
 		</div>
 	</form>
+	<br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	  	<h5>Post Comments <span class="badge">{{numcomments}}</span></h5>
+	  </div>
+	  <div class="panel-body list-group">
+	  	{{#each comments}}
+		{{> comment}}
+		{{/each}}
+	  </div>
+	</div>
 </template>
 
 
@@ -17,11 +28,21 @@
 	    <p class="list-group-item-text post-details">
 	    <span class="badge">{{category}}</span> <i class="fa fa-ellipsis-v"></i>
 	    <i class="fa fa-user"></i> {{name}} <i class="fa fa-ellipsis-v"></i> 
-	    <i class="fa fa-comments"></i> {{comments}} comments <i class="fa fa-ellipsis-v"></i> 
+	    <i class="fa fa-comments"></i> {{numcomments}} comments <i class="fa fa-ellipsis-v"></i> 
 	    <i class="fa fa-calendar"></i> {{when}} <i class="fa fa-ellipsis-v"></i> 
 	    <button type="button" id="like" title="Click to like post!" class="btn btn-success btn-xs">{{likes}} <i class="fa fa-thumbs-up"></i></button> <i class="fa fa-ellipsis-v"></i> 
 	    <button type="button" id="dislike" title="Click to dislike post!" class="btn btn-danger btn-xs">{{dislikes}} <i class="fa fa-thumbs-down"></i></button>
-	    <button type="button" id="delete" title="Delete Post!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
 	    </p>
 	  </div>
+</template>
+
+<template name="comment">
+	<div class="list-group-item">
+    <p class="list-group-item-text">{{body}}</p>
+    <h6 class="list-group-item-heading text-muted"><i class="fa fa-user"></i> {{who}} <i class="fa fa-calendar"></i> {{when}}
+    {{#if authorized}}
+    	<button type="button" id="delete" title="Delete Post!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
+    {{/if}}
+    </h6>
+  </div>
 </template>

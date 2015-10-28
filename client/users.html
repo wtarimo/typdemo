@@ -1,3 +1,36 @@
 <template name="users">
-		
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	  	<h5>Registered Users {{userCount}}</h5>
+	  </div>
+	  <div class="panel-body">
+	  <table class="table table-hover table-striped">
+	  	<thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>ID</th>
+            <th>Actions?</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each users}}
+			{{> user}}
+		{{/each}}
+        </tbody>
+	  </table>
+	  	
+	  </div>
+	</div>
+</template>
+
+<template name="user">
+	<tr>
+		<td>{{profile.firstName}}</td>
+		<td>{{profile.lastName}}</td>
+		<td>{{profile.gender}}</td>
+		<td>{{_id}}</td>
+		<td><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-question"></i> User Action</button></td>
+	</tr>
 </template>

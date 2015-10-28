@@ -1,10 +1,52 @@
+Template.postPage.events({
+  "submit #commentform": function(event){
+    
+    event.preventDefault();
+    
+    var body = $("#comment-body").val();
+    
+    $("#comment-body").val("");
+
+    var profile = Meteor.user().profile;
+    
+    var comment = 
+        {
+        uid:Meteor.userId(),  
+        who:profile["firstName"]+" "+profile["lastName"], 
+        body:body,
+        pid:this._id,
+        when: new Date()
+      };    
+    Comments.insert(comment);
+  }
+});
+
+Template.postPage.helpers({
+  comments: function(){
+    return Comments.find({pid:this._id},{sort:{when:-1}});
+  },
+  numcomments: function(){
+    return Comments.find({pid:this._id},{}).count();
+  }
+});
+
 Template.currentPost.helpers({
 	likes: function(){
 		return this.likes.length;
 	},
 	dislikes: function(){
 		return this.dislikes.length;
-	}
+	},
+  numcomments: function(){
+    return Comments.find({pid:this._id},{}).count();
+  }
+});
+
+Template.comment.helpers({
+  authorized: function(){
+    var post = Posts.findOne({ _id: this.pid });
+    return this.uid==Meteor.userId() || post.uid==Meteor.userId();
+  }
 });
 
 Template.currentPost.events({
@@ -44,5 +86,10 @@ Template.currentPost.events({
     		alert("Not Authorized!");
     	else
       		Posts.remove(this._id);
+    }
+});
+Template.comment.events({
+    "click #delete": function () {
+      Comments.remove(this._id);
     }
 });

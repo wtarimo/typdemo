@@ -36,6 +36,9 @@ Template.posts.helpers({
 	numposts: function(){
 		return Posts.find().count();
 	},
+	numcomments: function(){
+		return Comments.find().count();
+	}
 });
 
 Template.post.helpers({
@@ -45,6 +48,12 @@ Template.post.helpers({
 	dislikes: function(){
 		return this.dislikes.length;
 	},
+	numcomments: function(){
+    return Comments.find({pid:this._id},{}).count();
+  	},
+  	authorized: function(){
+	    return this.uid==Meteor.userId();
+	  }
 });
 
 Template.post.events({
@@ -80,9 +89,6 @@ Template.post.events({
   	  });
     },
     "click #delete": function () {
-    	if (Meteor.userId() != this.uid)
-    		alert("Not Authorized!");
-    	else
-      		Posts.remove(this._id);
+    	Meteor.call("deletePost", this._id);
     }
 });

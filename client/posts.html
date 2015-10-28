@@ -28,7 +28,7 @@
 	<br>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">
-	  	<h5>Posts</h5>
+	  	<h5>Posts: Comments {{numcomments}}</h5>
 	  </div>
 	  <div class="panel-body list-group">
 	  	{{#each posts}}
@@ -58,11 +58,13 @@
     <p class="list-group-item-text post-details">
     <span class="badge">{{category}}</span> <i class="fa fa-ellipsis-v"></i>
     <i class="fa fa-user"></i> {{name}} <i class="fa fa-ellipsis-v"></i> 
-    <i class="fa fa-comments"></i> {{comments}} comments <i class="fa fa-ellipsis-v"></i> 
+    <i class="fa fa-comments"></i> {{numcomments}} comments <i class="fa fa-ellipsis-v"></i> 
     <i class="fa fa-calendar"></i> {{when}} <i class="fa fa-ellipsis-v"></i> 
     <button type="button" id="like" title="Click to like post!" class="btn btn-success btn-xs">{{likes}} <i class="fa fa-thumbs-up"></i></button> <i class="fa fa-ellipsis-v"></i> 
     <button type="button" id="dislike" title="Click to dislike post!" class="btn btn-danger btn-xs">{{dislikes}} <i class="fa fa-thumbs-down"></i></button>
-    <button type="button" id="delete" title="Delete Post!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
+    {{#if authorized}}
+    	<button type="button" id="delete" title="Delete Post!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
+    {{/if}}
     </p>
   </div>
 </template>
