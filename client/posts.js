@@ -22,7 +22,6 @@ Template.posts.events({
 			category:category,
 			likes:[],
 			dislikes:[],
-			comments:0,
 			when: new Date()
 		};		
 		Posts.insert(post);
