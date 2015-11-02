@@ -1,37 +1,46 @@
-<template name="chat">
-	
-	{{#if currentUser}}
-	<form id="chatform">
+<template name="chatPage">
+	{{> currentChat}}
+	<form id="messageform">
 		<div class="input-group">
-		  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-commenting-o"></i></span>
-		  <input type="text" id="chatinput" class="form-control" placeholder="Enter your chat text here" size="100%" aria-describedby="basic-addon1">
+		  <span class="input-group-addon">New Message</span>
+		  <input type="text" id="message-body" class="form-control" size="100%">
 		</div>
 	</form>
-	{{else}}
-	<div class="alert alert-danger alert-dismissible" role="alert">
-	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	  <i class="fa fa-info-circle red"></i> You must be logged in to create comments!
-	</div>
-	{{/if}}
 	<br>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">
-	  	<h5>Showing the last {{ofTen}} of {{numchats}} comments</h5>
+	  	<h5>Chat Messages <span class="badge">{{nummessages}}</span></h5>
 	  </div>
 	  <div class="panel-body list-group">
-	  	{{#each chatlines}}
-		{{> chatitem}}
+	  	{{#each messages}}
+		{{> message}}
 		{{/each}}
 	  </div>
 	</div>
-
 </template>
 
 
-
-<template name="chatitem">
+<template name="currentChat">
 	<div class="list-group-item">
-    <p class="list-group-item-text">{{what}}</p>
-    <h6 class="list-group-item-heading text-muted"><i class="fa fa-user"></i> {{who}} <i class="fa fa-calendar"></i> {{when}}</h6>
+		<h5 class="list-group-item-heading"><i class="fa fa-users"></i> {{participantNames}}</h5>
+	    <p class="list-group-item-text post-details">
+	    <span class="badge"><i class="fa fa-user"></i> {{creatorName}}</span> <i class="fa fa-ellipsis-v"></i>
+	    <i class="fa fa-comments"></i> {{messageCount}} messages <i class="fa fa-ellipsis-v"></i> 
+	    <i class="fa fa-calendar"></i> {{createdOn}}
+	    {{#if authorized}}
+	    	<button type="button" id="delete" title="Delete Chat!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
+	    {{/if}}
+	    </p>
+  </div>
+</template>
+
+<template name="message">
+	<div class="list-group-item">
+    <p class="list-group-item-text">{{body}}</p>
+    <h6 class="list-group-item-heading text-muted"><i class="fa fa-user"></i> {{who}} <i class="fa fa-calendar"></i> {{when}}
+    {{#if authorized}}
+    	<button type="button" id="delete" title="Delete Message!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
+    {{/if}}
+    </h6>
   </div>
 </template>

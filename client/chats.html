@@ -1,0 +1,40 @@
+<template name="chats">
+	
+	{{#if currentUser}}
+	<br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	  	<h5><span class="badge">{{numchats}}</span> Chats
+	  	<a role="button" class="btn btn-success pull-right" href="{{pathFor 'startchat'}}"><i class="fa fa-pencil-square-o"></i> New Chat</a></h5>
+	  </div>
+	  <div class="panel-body list-group">
+	  	{{#each chats}}
+		{{> chat}}
+		{{/each}}
+	  </div>
+	</div>
+
+	{{else}}
+	<div class="alert alert-danger alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <i class="fa fa-info-circle red"></i> You must be logged in to start or view chats!
+	</div>
+	{{/if}}
+</template>
+
+
+<template name="chat">
+	<div class="list-group-item">
+	<a href="/chats/{{_id}}">
+		<h5 class="list-group-item-heading"><i class="fa fa-users"></i> {{participantNames}}</h5>
+	</a>    
+    <p class="list-group-item-text post-details">
+    <span class="badge"><i class="fa fa-user"></i> {{creatorName}}</span> <i class="fa fa-ellipsis-v"></i>
+    <i class="fa fa-comments"></i> {{messageCount}} messages <i class="fa fa-ellipsis-v"></i> 
+    <i class="fa fa-calendar"></i> {{createdOn}}
+    {{#if authorized}}
+    	<button type="button" id="delete" title="Delete Post!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
+    {{/if}}
+    </p>
+  </div>
+</template>

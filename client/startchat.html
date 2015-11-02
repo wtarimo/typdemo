@@ -1,0 +1,36 @@
+<template name="startchat">
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	  	<h5>Select user(s) to chat with
+	  		<button type="button" class="btn btn-success pull-right" id="startChatButton"><i class="fa fa-comments-o"></i> Start Chat with Selected User(s).</button>
+	  	</h5>
+	  </div>
+	  <div class="panel-body">
+	  <table class="table table-hover table-striped">
+	  	<thead>
+          <tr>
+          	<th>Select?</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each users}}
+			{{> user2}}
+		{{/each}}
+        </tbody>
+	  </table>
+	  	
+	  </div>
+	</div>
+</template>
+
+<template name="user2">
+	{{#if notCurrentUser _id}}
+	<tr>
+		<td><input type="checkbox" name="selectedUsers" value="{{_id}}" style="width:50px;"></td>
+		<td>{{profile.firstName}}</td>
+		<td>{{profile.lastName}}</td> 
+	</tr>
+	{{/if}}
+</template>

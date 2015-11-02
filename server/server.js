@@ -2,6 +2,10 @@ Meteor.methods({
   deletePost: function (postId) {
     Comments.remove({pid:postId});
     Posts.remove(postId);
+  },
+  deleteChat: function (chatId) {
+    Messages.remove({cid:chatId});
+    Chats.remove(chatId);
   }
 });
 

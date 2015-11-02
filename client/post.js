@@ -44,8 +44,7 @@ Template.currentPost.helpers({
 
 Template.comment.helpers({
   authorized: function(){
-    var post = Posts.findOne({ _id: this.pid });
-    return this.uid==Meteor.userId() || post.uid==Meteor.userId();
+    return this.uid==Meteor.userId();
   }
 });
 
@@ -84,8 +83,10 @@ Template.currentPost.events({
     "click #delete": function () {
     	if (Meteor.userId() != this.uid)
     		alert("Not Authorized!");
-    	else
-      		Posts.remove(this._id);
+    	else {
+        Meteor.call("deletePost", this._id);
+        Router.go("/posts");
+      }
     }
 });
 Template.comment.events({
